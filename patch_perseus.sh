@@ -29,7 +29,7 @@ if [ ! -f "com.bilibili.AzurLane.apk" ]; then
 
     # eg: wget "your download link" -O "your packge name.apk" -q
     #if you want to patch .xapk, change the suffix here to wget "your download link" -O "your packge name.xapk" -q
-    wget https://73f114e3bb7094dd3461c44ffe782737.dlied1.cdntips.net/dd.myapp.com/sjy.00005/sjy.00002/16891/apk/ECD753DE1347F245187E333041876A22.apk?mkey=lego_ztc&f=00&sche_type=7&fsname=com.tencent.tmgp.bilibili.blhx_8.1.1.apk&cip=14.150.105.245&proto=https -O com.tencent.tmgp.bilibili.blhx.apk -q
+    wget https://pkg.biligame.com/games/blhx_8.1.1_20240426_1_20240429_053419_20cea.apk -O com.bilibili.AzurLane.apk -q
     echo "apk downloaded !"
     
     # if you can only download .xapk file uncomment 2 lines below. (delete the '#')
