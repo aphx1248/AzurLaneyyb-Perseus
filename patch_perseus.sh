@@ -24,7 +24,7 @@ done
 chmod +x apkeep
 
 # Download Azur Lane
-if [ ! -f "com.tencent.tmgp.bilibili.blhx.apk" ]; then
+if [ ! -f "com.bilibili.AzurLane.apk" ]; then
     echo "Get Azur Lane apk"
 
     # eg: wget "your download link" -O "your packge name.apk" -q
@@ -58,5 +58,5 @@ echo "Build Patched Azur Lane apk"
 java -jar apktool.jar -q -f b com.tencent.tmgp.bilibili.blhx -o build/com.tencent.tmgp.bilibili.blhx.patched.apk
 
 echo "Set Github Release version"
-s=($(./apkeep -a com.tencent.tmgp.bilibili.blhx -l))
+s=($(./apkeep -a com.bilibili.AzurLane -l))
 echo "PERSEUS_VERSION=$(echo ${s[-1]})" >> $GITHUB_ENV
