@@ -29,7 +29,7 @@ if [ ! -f "com.bilibili.AzurLane.apk" ]; then
 
     # eg: wget "your download link" -O "your packge name.apk" -q
     #if you want to patch .xapk, change the suffix here to wget "your download link" -O "your packge name.xapk" -q
-    wget https://downali.9game.cn/s1/2/10/20240428205421_blhx_uc_2024_04_26_21_26_31.apk -O com.bilibili.blhx.uc.apk -q
+    wget https://8884ec244c4c3891fa554e453a8b9bf9.dlied1.cdntips.net/imtt.dd.qq.com/sjy.20002/sjy.00002/16891/apk/ECD753DE1347F245187E333041876A22.apk?mkey=663f16a9b72ea779&f=8cf6&fsname=com.tencent.tmgp.bilibili.blhx_8.1.1.apk -O com.tencent.tmgp.bilibili.blhx.apk -q
     echo "apk downloaded !"
     
     # if you can only download .xapk file uncomment 2 lines below. (delete the '#')
@@ -44,7 +44,7 @@ if [ ! -d "Perseus" ]; then
 fi
 
 echo "Decompile Azur Lane apk"
-java -jar apktool.jar -q -f d com.bilibili.blhx.uc.apk
+java -jar apktool.jar -q -f d com.tencent.tmgp.bilibili.blhx.apk
 
 echo "Copy Perseus libs"
 cp -r Perseus/. com.bilibili.AzurLane/lib/
@@ -55,8 +55,8 @@ sed -ir "s#\($oncreate\)#.method private static native init(Landroid/content/Con
 sed -ir "s#\($oncreate\)#\1\n    const-string v0, \"Perseus\"\n\n\    invoke-static {v0}, Ljava/lang/System;->loadLibrary(Ljava/lang/String;)V\n\n    invoke-static {p0}, Lcom/unity3d/player/UnityPlayerActivity;->init(Landroid/content/Context;)V\n#" com.bilibili.AzurLane/smali_classes2/com/unity3d/player/UnityPlayerActivity.smali
 
 echo "Build Patched Azur Lane apk"
-java -jar apktool.jar -q -f b com.bilibili.blhx.uc -o build/com.bilibili.blhx.uc.patched.apk
+java -jar apktool.jar -q -f b com.tencent.tmgp.bilibili.blhx -o build/com.tencent.tmgp.bilibili.blhx.patched.apk
 
 echo "Set Github Release version"
-s=($(./apkeep -a com.bilibili.blhx.uc -l))
+s=($(./apkeep -a com.tencent.tmgp.bilibili.blhx -l))
 echo "PERSEUS_VERSION=$(echo ${s[-1]})" >> $GITHUB_ENV
